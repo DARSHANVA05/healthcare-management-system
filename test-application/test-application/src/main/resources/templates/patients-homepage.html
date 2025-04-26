@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>patients-homepage</title>
+    <style>
+
+        .container {
+
+        position: relative;
+        width: 100%;
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0 auto;
+
+        }
+
+        .image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        }
+
+        .text {
+            white-space: nowrap;
+            color: white;
+
+            text-align: right;
+            position: absolute;
+            overflow: hidden;
+
+            top: 0%;
+            left: 45%;
+
+            }
+
+            body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            }
+
+
+        .box {
+            background-color: #4CAF50;
+            color: black;
+            padding: 20px;
+            text-align: left;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+                    .container {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 10px;
+                }
+                .item {
+                    background-color: #f2f2f2;
+                    margin-bottom: 20px;
+                    border: 0px solid #ccc;
+                    padding: 20px;
+                    text-align: left;
+                    border-radius: 5px;
+                    width: calc(33.33% - 10px);
+                    box-sizing: border-box;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                }
+                .button {
+          display: inline-block;
+          border-radius: 4px;
+          background-color: # F0F8FF;
+          border: none;
+          color: white;
+          text-align: center;
+          font-size: 30px;
+          padding: 4px;
+          width: 400px;
+          transition: all 0.5s;
+          cursor: pointer;
+          margin: 5px;
+        }
+
+        .button span {
+          cursor: pointer;
+          display: inline-block;
+          position: relative;
+          transition: 0.5s;
+        }
+
+        .button span:after {
+          content: '\00bb';
+          position: absolute;
+          color:black;
+          opacity: 0;
+          top: 0;
+          right: -20px;
+          transition: 0.5s;
+        }
+
+        .button:hover span {
+          padding-right: 25px;
+        }
+
+        .button:hover span:after {
+          opacity: 1;
+          right: 0;
+        }
+
+        .container-x{
+            background-color:#f4f4f4;
+            color: #ccc;
+            display: flex;
+            font-family: Arial, Helvetica, sans-serif;
+
+        }
+
+        .grid-container-x {
+
+            margin: 0 auto;
+            padding: 10px;
+            color: #040058;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .grid-item-x {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+            font-weight: bold;
+            padding: 15px 30px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .grid-item-x:hover {
+            background-color: #040058;
+            color: #00f7ff;
+        }
+
+         footer {
+            background-color: #153560;
+            color: #fff;
+            padding: 40px 20px;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .footer-column {
+            flex: 1 1 200px;
+            margin: 10px;
+        }
+
+        .footer-column h2, .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .footer-column p, .footer-column ul, .footer-column input, .footer-column button {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .footer-column ul a {
+            margin-bottom: 5px;
+            color: #aaa;
+        }
+
+        .footer-column input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .footer-column button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .footer-column button:hover {
+            background-color: #0056b3;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+        }
+
+        .contact-info span {
+            font-weight: bold;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        a.ex1:hover, a.ex1:active {
+            text-decoration: none;
+            font-size: large;
+            color: rgba(255, 255, 255, 0.911);
+            font-weight: bold;}
+
+            a.ex2:hover, a.ex2:active {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.911);
+            font-weight: bold;}
+
+    </style>
+</head>
+<body style="padding:0px;
+             margin: 0 auto;">
+<header style="margin: 0;
+        padding: 0;">
+    <h1 style="color: white;
+                background: linear-gradient(90deg, #020024 30%, #00f7ff, rgb(2,0,36) 180%);
+                font-family: 'Garamond', monospace;
+                margin: 0;
+                padding: 10px;
+                text-align: left;
+                font-size: 50px;">CommunityCare Diagnostics</h1>
+</header>
+<p style="color: white;
+                background: linear-gradient(90deg, #fcfcde 30%, #00f7ff, rgb(2,0,36) 180%);
+                margin: 0;
+                color:white;
+                padding: 10px;
+                text-align: right;
+                font-size: 26px;"><strong style="padding:8px">Welcome <td th:text="${patientName}"></td></strong></p>
+
+<div class="container" style="border:#F0F8FF">
+    <div class="overlay">
+        <div class="text">
+            <strong style="font-size: 70px; color:black">
+                <br>
+                Previous prescriptions<br>
+                at one place.
+            </strong><br>
+            <form action="#" th:action="@{/patient/prescriptions/{patientId}(patientId=${patients.patientId})}" method="GET">
+                <button class="button" style="vertical-align:middle; color:black"><span>List of prescription</span></button>
+            </form>
+        </div>
+    </div>
+    <img style="display: block;
+                width: 100%;
+                height: 350px;
+                object-fit: cover;
+                background-color: #F0F8FF;">
+
+</div>
+
+<div class="container-x">
+    <div style="background-color: #020024;
+                padding: 10px;
+                font-size: xx-large;"><h1><strong>Explore our Centres of Clinical Excellence</strong></h1></div>
+    <div class="grid-container-x">
+
+        <form action="#" th:action="@{/appointment/cardiologists}" method="GET">
+            <button class="grid-item-x">Cardiology</button>
+        </form>
+
+        <form action="#" th:action="@{/appointment/neurologists}" method="GET">
+            <button class="grid-item-x">Neurology</button>
+        </form>
+
+        <form action="#" th:action="@{/appointment/gastroenterologists}" method="GET">
+            <button class="grid-item-x">Gastroenterology</button>
+        </form>
+
+        <form action="#" th:action="@{/appointment/orthopedics}" method="GET">
+            <button class="grid-item-x">Orthopedic</button>
+        </form>
+
+        <form action="#" th:action="@{/appointment/oncologists}" method="GET">
+            <button class="grid-item-x">Oncology</button>
+        </form>
+
+        <form action="#" th:action="@{/appointment/gynecologists}" method="GET">
+            <button class="grid-item-x">Gynecology</button>
+        </form>
+
+        <form action="#" th:action="@{/appointment/dermatologists}" method="GET">
+            <button class="grid-item-x">Dermatology</button>
+        </form>
+
+        <form action="#" th:action="@{/appointment/ophthalmologists}" method="GET">
+            <button class="grid-item-x">Ophthalmology</button>
+        </form>
+
+        <form action="#" th:action="@{/appointment/pediatricians}" method="GET">
+            <button class="grid-item-x">Pediatrics</button>
+        </form>
+
+        <form action="#" th:action="@{/appointment/endocrinologists}" method="GET">
+            <button class="grid-item-x">Endocrinology</button>
+        </form>
+
+        <form action="#" th:action="@{/appointment/urologists}" method="GET">
+            <button class="grid-item-x">Urology</button>
+        </form>
+
+        <form action="#" th:action="@{/appointment/nephrologists}" method="GET">
+            <button class="grid-item-x">Nephrology</button>
+        </form>
+
+        <form action="#" th:action="@{/appointment/pulmonologists}" method="GET">
+            <button class="grid-item-x">Pulmonology</button>
+        </form>
+
+        <form action="#" th:action="@{/appointment/rheumatologists}" method="GET">
+            <button class="grid-item-x">Rheumatology</button>
+        </form>
+
+        <form action="#" th:action="@{/appointment/radiologists}" method="GET">
+            <button class="grid-item-x">Radiology</button>
+        </form>
+
+        <form action="#" th:action="@{/appointment/neonatologists}" method="GET">
+            <button class="grid-item-x">Neonatology</button>
+        </form>
+
+        <form action="#" th:action="@{/appointment/psychiatrists}" method="GET">
+            <button class="grid-item-x">Psychiatry</button>
+        </form>
+
+        <form action="#" th:action="@{/appointment/dentists}" method="GET">
+            <button class="grid-item-x">Dentistry</button>
+        </form>
+
+        <form action="#" th:action="@{/appointment/ent-specialists}" method="GET">
+            <button class="grid-item-x">ENT (Ear, Nose, Throat)</button>
+        </form>
+
+
+    </div>
+</div>
+<br>
+<div class="container-x">
+
+    <div class="grid-container-x">
+
+        <form action="#" th:action="@{/patient/cpt}" method="GET">
+            <button class="grid-item-x">Coagulation profile test(CPT)</button>
+        </form>
+
+        <form action="#" th:action="@{/patient/cbct}" method="GET">
+            <button class="grid-item-x">Complete Blood Count test(CBC)</button>
+        </form>
+
+        <form action="#" th:action="@{/patient/dfpt}" method="GET">
+            <button class="grid-item-x">Dengue fever panel test(DFP)</button>
+        </form>
+
+        <form action="#" th:action="@{/patient/kft}" method="GET">
+            <button class="grid-item-x">Kidney function test(KFT)</button>
+        </form>
+
+        <form action="#" th:action="@{/patient/lpt}" method="GET">
+            <button class="grid-item-x">Lipid profile test(LPT)</button>
+        </form>
+
+        <form action="#" th:action="@{/patient/lft}" method="GET">
+            <button class="grid-item-x">Liver function test(LFT)</button>
+        </form>
+
+        <form action="#" th:action="@{/patient/tft}" method="GET">
+            <button class="grid-item-x">Thyroid function test(TFT)</button>
+        </form>
+    </div>
+    <div style="background-color: #020024;
+                padding: 10px;
+                font-size: xx-large;"><h1><strong>Your health,our accurate results</strong></h1></div>
+</div>
+<br>
+<footer>
+    <div class="footer-container">
+        <div class="footer-column">
+            <h1 style="color: white;
+                font-family: 'Garamond', monospace;
+                margin: 0;
+                padding: 10px;
+                text-align: left;
+                font-size: 40px;">CommunityCare Diagnostics</h1>
+        </div>
+        <div class="footer-column">
+            <h2 style="font-size: 22px">Patient Care</h2><hr>
+            <ul>
+                <a class="ex1">Find A Doctor</a><br>
+                <a class="ex1">Medical Services</a><br>
+                <a class="ex1">Patient Testimonials</a><br>
+                <a class="ex1">Pay Online</a><br>
+                <a class="ex1">Apollo Surgery</a><br>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h2 style="font-size: 22px">Centres of Excellence</h2><hr>
+            <ul>
+                <a class="ex1"th:href="@{/receptionist/cardiologists}">Cardiologists</a>
+                <br>
+                <a class="ex1"th:href="@{/receptionist/dermatologists}">Dermatologists</a>
+                <br>
+                <a class="ex1"th:href="@{/receptionist/endocrinologists}">Endocrinologists</a>
+                <br>
+                <a class="ex1"th:href="@{/receptionist/gastroenterologists}">Gastroenterologists</a>
+                <br>
+                <a class="ex1"th:href="@{/receptionist/gynecologists}">Gynecologists</a>
+                <br>
+                <a class="ex1"th:href="@{/receptionist/neurologists}">Neurologists</a>
+                <br>
+                <a class="ex1"th:href="@{/receptionist/nephrologists}">Nephrologists</a>
+                <br>
+                <a class="ex1"th:href="@{/receptionist/oncologists}">Oncologists</a>
+                <br>
+                <a class="ex1"th:href="@{/receptionist/ophthalmologists}">Ophthalmologists</a>
+                <br>
+                <a class="ex1"th:href="@{/receptionist/orthopedics}">Orthopedics</a>
+                <br>
+                <a class="ex1"th:href="@{/receptionist/pediatricians}">Pediatricians</a>
+                <br>
+                <a class="ex1"th:href="@{/receptionist/urologists}">Urologists</a>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h2 style="font-size: 22px">Medical Tests</h2><hr>
+            <ul>
+                <a class="ex1" th:href="@{/patient/cpt}">Coagulation profile test(CPT)</a><br>
+                <a class="ex1" th:href="@{/patient/cbct}">Complete Blood Count test(CBC)</a><br>
+                <a class="ex1" th:href="@{/patient/dfpt}">Dengue fever panel test(DFP)</a><br>
+                <a class="ex1" th:href="@{/patient/kft}">Kidney function test(KFT)</a><br>
+                <a class="ex1" th:href="@{/patient/lpt}">Lipid profile test(LPT)</a><br>
+                <a class="ex1" th:href="@{/patient/lft}">Liver function test(LFT)</a><br>
+                <a class="ex1" th:href="@{/patient/tft}">Thyroid function test(TFT)</a>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h2 style="font-size: 22px">Contact Us</h2><hr>
+            <ul>
+                <a class="ex2"> Acharya College Rd, Soladevanahalli, Bengaluru, Karnataka 560107 </a><br>
+                <a class="ex2"> ✉ CommunityCare@gmail.com </a><br>
+                <a class="ex2"> ☎ Emergency: 9986053116 </a><br>
+                <a class="ex2"> ☎ Help Desk: 7892027335</a><br>
+                <a class="ex2"> ☎ Enquiry: 897122787</a><br>
+                <a class="ex2"> ☎ Customer Care: 8088303449</a><br>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

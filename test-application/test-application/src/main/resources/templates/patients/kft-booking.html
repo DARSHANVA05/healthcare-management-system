@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Kidney function test (KFT)</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f3f7fa;  /* Light background */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #333;
+            margin: 0;
+        }
+
+        /* Container styling */
+        .container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 0; /* No padding around header */
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        /* Header Styling inside container */
+        .container header h1 {
+            color: white;
+            background: linear-gradient(90deg, #020024 30%, #00f7ff, rgb(2, 0, 36) 180%);
+            font-family: 'Garamond', monospace;
+            margin: 0;
+            padding: 20px;
+            text-align: left;
+            font-size: 36px;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+
+        /* Title and description */
+        h2 {
+            font-size: 1.8em;
+            color: #333;
+            margin: 20px 0 10px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* Form styling */
+        form {
+            display: flex;
+            flex-direction: column;
+            padding: 0 40px 40px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="number"],
+        input[type="date"],
+        input[type="time"],
+        select,
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            font-size: 1em;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: border-color 0.3s;
+            background-color: #f9f9f9; /* Light field background */
+        }
+
+        input[type="number"]:focus,
+        input[type="date"]:focus,
+        input[type="time"]:focus,
+        select:focus,
+        input[type="text"]:focus {
+            border-color: #00f7ff; /* Light blue border on focus */
+            outline: none;
+        }
+
+        /* Button styling */
+        button {
+            padding: 14px;
+            background-color: #00142b; /* Light blue button */
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        button:hover {
+            background-color: skyblue;
+            box-shadow: 0 4px 10px rgba(0, 119, 204, 0.2);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .container header h1 {
+                font-size: 1.5em;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            button {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>CommunityCare Diagnostics</h1>
+    </header>
+
+    <h2>Kidney function test</h2>
+    <h4>Please select the date of visit</h4>
+    <br>
+    <form id="appointmentForm" th:action="@{/patient/save-kft}" th:object="${kidneyFunctionTest}" method="POST">
+
+        <div class="form-group">
+            <label for="appointmentDate">Date</label>
+            <input type="date" th:field="*{date}" id="appointmentDate" name="appointmentDate" required>
+        </div>
+
+        <button type="submit">Book test</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratory dashboard</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #0056b3;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .container {
+            padding: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .section h2 {
+            font-size: 1.5rem;
+            color: #0056b3;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        table th, table td {
+            padding: 0.75rem;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        .status-pending {
+            color: #d9534f;
+            font-weight: bold;
+        }
+
+        .status-completed {
+            color: #5cb85c;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            table th, table td {
+                font-size: 0.9rem;
+            }
+        }
+        .grid-container-x {
+
+margin: 0 auto;
+padding: 10px;
+color: #040058;
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+grid-gap: 15px;
+margin-bottom: 30px;
+}
+
+.grid-item-x {
+background-color: #fff;
+padding: 20px;
+text-align: center;
+border-radius: 5px;
+box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+font-weight: bold;
+padding: 15px 30px;
+font-size: 16px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+
+.grid-item-x:hover {
+background-color: #040058;
+color: #00f7ff;
+}
+    </style>
+</head>
+<body>
+
+    <header style="margin: 0;
+        padding: 0;">
+        <h1 style="color: white;
+                background: linear-gradient(90deg, #020024 30%, #00f7ff, rgb(2,0,36) 180%);
+                font-family: 'Garamond', monospace;
+                margin: 0;
+                padding: 10px;
+                text-align: left;
+                font-size: 50px;">CommunityCare Diagnostics</h1>
+    </header>
+
+<div class="container">
+    <!-- All Lab Tests Section -->
+    <div class="grid-container-x">
+
+        <form action="#" th:action="@{/laboratory/list/cpt}" method="GET">
+            <button class="grid-item-x">Coagulation profile test(CPT)</button>
+        </form>
+
+        <form action="#" th:action="@{/laboratory/list/cbct}" method="GET">
+            <button class="grid-item-x">Complete Blood Count test(CBC)</button>
+        </form>
+
+        <form action="#" th:action="@{/laboratory/list/dfpt}" method="GET">
+            <button class="grid-item-x">Dengue fever panel test(DFP)</button>
+        </form>
+
+        <form action="#" th:action="@{/laboratory/list/kft}" method="GET">
+            <button class="grid-item-x">Kidney function test(KFT)</button>
+        </form>
+
+        <form action="#" th:action="@{/laboratory/list/lpt}" method="GET">
+            <button class="grid-item-x">Lipid profile test(LPT)</button>
+        </form>
+
+        <form action="#" th:action="@{/laboratory/list/lft}" method="GET">
+            <button class="grid-item-x">Liver function test(LFT)</button>
+        </form>
+
+        <form action="#" th:action="@{/laboratory/list/tft}" method="GET">
+            <button class="grid-item-x">Thyroid function test(TFT)</button>
+        </form>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #fff8b1, #e6eff5);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: backgroundAnimation 30s ease-in-out infinite;
+        }
+        a:hover {
+            color: #020024;
+            transform: scale(1.05);
+        }
+
+        @keyframes backgroundAnimation {
+            0% { background: linear-gradient(to right, #74ebd5, #ACB6E5); }
+            50% { background: linear-gradient(to right, #ACB6E5, #74ebd5); }
+            100% { background: linear-gradient(to right, #74ebd5, #ACB6E5); }
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            background-color: white;
+            border-radius: 0px 0px 15px 15px;
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .left-side {
+            background: linear-gradient(120deg, #fefae0, #e5e5e5);
+            padding: 40px;
+            width: 65%;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .left-side h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            animation: fadeInText 1.5s ease-in;
+        }
+
+        .left-side h1 {
+            font-size: 1.2em;
+            animation: fadeInText 2s ease-in;
+        }
+
+        @keyframes fadeInText {
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0px); }
+        }
+
+        .right-side {
+            padding: 40px;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            animation: fadeInForm 1s ease-in;
+        }
+
+        @keyframes fadeInForm {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        h3 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        h3 img {
+            margin-right: 10px; /* Adjust spacing between image and text */
+            width: 40px; /* Adjust image size */
+            height: 40px;
+        }
+
+        .textbox {
+            margin-bottom: 20px;
+            animation: inputFocusEffect 0.5s ease forwards;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #74ebd5;
+            transform: scale(1.05);
+            box-shadow: 0px 0px 10px rgba(116, 235, 213, 0.5);
+        }
+
+        @keyframes inputFocusEffect {
+            0% { transform: translateY(-20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        button {
+            padding: 10px;
+            background-color: #2acbd0;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #020024;
+            transform: scale(1.05);
+        }
+
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .left-side, .right-side {
+                width: 100%;
+                padding: 20px;
+            }
+
+            .left-side h2 {
+                font-size: 1.5em;
+            }
+
+            .left-side p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div style="border-radius:15px 15px 15px 15px">
+        <header style="margin: 0;
+        padding: 0;">
+            <h1 style="color: white;
+                background: linear-gradient(90deg, #020024 30%, #00f7ff, rgb(2,0,36) 180%);
+                font-family: 'Garamond', monospace;
+                margin: 0;
+                padding: 10px;
+                border-radius:10px 10px 0px 0px;
+                text-align: left;
+                font-size: 40px;">CommunityCare Diagnostics</h1>
+        </header>
+    </div>
+    <div class="container">
+
+        <!-- Left side with healthcare-related content -->
+
+
+        <div class="left-side" style="padding=1px;background:background: linear-gradient(120deg, #fefae0, #e5e5e5);">
+            <h1 style="font-size: 50px;color:#020024"><strong><i>Better Medicine Makes a Better World!</i></strong></h1>
+        </div>
+
+        <!-- Right side with login form -->
+        <div class="right-side">
+            <form th:action="@{/doctor/login-validation}" th:object="${doctor}" method="POST">
+                <h3>
+                    Doctor Login
+                </h3>
+                <div class="textbox">
+                    <input type="number" th:field="*{doctorId}"
+                           placeholder="Doctor Id" class="form-control mb-4 col-4" required>
+                    <br>
+                    <input type="password" th:field="*{password}"
+                           placeholder="Password" class="form-control mb-4 col-4" required>
+                </div>
+                <button type="submit" class="btn btn-info col-2">Login</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

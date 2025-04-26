@@ -1,0 +1,85 @@
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Composition</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            height: 500px;
+            max-width: 1200px;
+            margin: 50px auto;
+            background: white;
+            padding: 0px;
+            border-radius: 8px 8px 0px 0px;
+            margin-bottom:0px;
+
+        }
+        .container-warning {
+            max-width: 1200px;
+            margin: 50px auto;
+            background: white;
+            margin-top:0px;
+            padding: 0px;
+            border-radius: 0px 0px 8px 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: left;
+            margin-left: 15px;
+            margin-right: 15px;
+            padding: 0px;
+        }
+        .header h1 {
+            font-size: 24px;
+            color: #333;
+        }
+        .composition {
+
+            margin-left: 15px;
+            margin-right: 15px;
+            padding: 0px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <header style="margin: 0;
+        padding: 0;
+        border-radius: 8px 8px;">
+        <h1 style="color: white;
+                background: linear-gradient(90deg, #020024 30%, #00f7ff, rgb(2,0,36) 180%);
+                font-family: 'Garamond', monospace;
+                margin: 0;
+                padding: 10px;
+                text-align: left;
+                font-size: 50px;
+                border-radius: 8px 8px 0px 0px">CommunityCare Diagnostics</h1>
+    </header>
+    <br>
+    <div class="header">
+        <h1>Medicine Composition of <td th:text="${medicine}"></td></h1>
+        <hr>
+    </div>
+    <ul class="composition">
+        <td th:text="${answer}"></td>
+    </ul>
+    <br><br>
+
+    <br>
+</div>
+<div class="container-warning">
+    <p style="text-align: center;
+                color:grey;
+                margin-top: 0px;">Llama model can make mistakes. Check important information.</p>
+    <br>
+</div>
+
+</body>
+</html>

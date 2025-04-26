@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dengue fever panel test</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Header styling */
+        .header {
+            width: 93.4%;
+            background: linear-gradient(90deg, #020024 30%, rgb(0, 247, 255), rgb(2,0,36) 180%);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            font-size: 25px;
+            font-family: 'Garamond', monospace;
+        }
+
+        .header .hospital-name {
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        .header .doctor-info {
+            text-align: right;
+        }
+
+        .header .doctor-info p {
+            margin: 0;
+        }
+
+        form {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            width: 60%;
+            margin-top: 0px;
+        }
+
+        h1 {
+            text-align: center;
+            color:  rgb(2,0,36);
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .textbox, .numbox {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"], input[type="date"], textarea, input[type="number"] {
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-color: #e6f7ff;
+            outline: none;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input[type="text"]:focus, input[type="date"]:focus, input[type="number"]:focus, textarea:focus {
+            background-color: #d4f0ff;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        textarea {
+            resize: none;
+            width: 96%;
+            border-radius: 7px;
+            height: 150px;
+        }
+
+        button {
+            width: 100%;
+            font-size: 1.5em;
+            background-color: rgb(0, 2, 113);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #020024;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        label {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .search-container {
+        display: flex;
+        border: 0px solid #ccc;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .search-input {
+            border: none;
+            padding: 10px;
+            outline: none;
+            flex: 1;
+            font-size: 16px;
+        }
+
+        .search-button {
+            background-color: grey;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: 500;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .search-button:hover {
+            background-color: #000017;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<!-- Header section -->
+<div class="header">
+    <div class="hospital-name">CommunityCare Diagnostics</div>
+
+</div>
+<h1>Dengue fever panel test</h1>
+<br>
+
+<form action="#" th:action="@{/laboratory/save-dfpt}" style="box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);" th:object="${dengueFeverPanelTest}" method="POST">
+
+    <h2>Patient name:<td th:text="${patientName}"></td></h2>
+    <h2>Age:<td th:text="${age}"></td></h2>
+    <hr>
+    <br>
+    <div class="numbox" style="display=flex">
+        <label>DENGUE FEVER ANTIBODY, IgG, SERUM </label>
+        <input type="number" th:field="*{dengueFeverAnitbodyIgGResult}" placeholder="index" min="0" step="0.1" class="form-control mb-4 col-4" required>
+    </div>
+    <div class="numbox" style="display=flex">
+        <label>DENGUE FEVER ANTIBODY, IgM, SERUM</label>
+        <input type="number" th:field="*{dengueFeverAnitbodyIgMResult}" placeholder="index" min="0" step="0.1" class="form-control mb-4 col-4" required>
+    </div>
+    <button type="submit">Save results</button>
+</form>
+
+
+</body>
+</html>

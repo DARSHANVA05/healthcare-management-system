@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Validation</title>
+</head>
+<body>
+<form th:action="@{/doctor/password}" th:object="${doctor}" method="POST">
+    <h3>Please enter the OTP sent to your registered email to continue.</h3>
+    <h5><i>If you didn't receive it, check your spam folder.</i></h5>
+    <div class="textbox">
+        <input type="number" th:field="*{otp}"
+               placeholder="otp" class="form-control mb-4 col-4" required>
+        <br>
+    </div>
+    <button type="submit" class="btn btn-info col-2">Verify</button>
+</form>
+
+</body>
+</html>

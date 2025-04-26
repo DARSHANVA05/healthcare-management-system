@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kidney function test</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0px;
+}
+
+h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+table {
+    margin-left:70px;
+    width: 80%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.hover-table th, .hover-table td {
+    border: 0px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.hover-table th {
+    background-color: #002343;
+    font-weight: bold;
+    color: white;
+}
+tr:nth-child(even){background-color: #f4f4f4;}
+
+.hover-table tr:hover {
+    background-color: #d2d2d2;
+}
+
+.hover-table button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #004ea1;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.hover-table button:hover {
+    background-color: #3898ff;
+}
+
+    </style>
+</head>
+<body>
+<header style="margin: 0;
+        padding: 0;">
+    <h1 style="color: white;
+                background: linear-gradient(90deg, #020024 30%, #00f7ff, rgb(2,0,36) 180%);
+                font-family: 'Garamond', monospace;
+                margin: 0;
+                padding: 10px;
+                text-align: left;
+                font-size: 50px;">CommunityCare Diagnostics</h1>
+</header>
+
+<h1 style="padding:10px; font-size:30px">Pending Tests</h1>
+<table class="hover-table">
+    <thead>
+    <tr>
+        <th>Test ID</th>
+        <th>Patient</th>
+        <th>Date</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="pendingKftList : ${pendingKftList}">
+        <td th:text="${pendingKftList.kftId}"></td>
+        <td th:text="${pendingKftList.patientId}"></td>
+        <td th:text="${pendingKftList.date}"></td>
+        <td style="display: flex;">
+            <form action="#" th:action="@{/laboratory/test-kft/{kftId}(kftId=${pendingKftList.kftId})}" method="POST">
+                <button class="delete-button" style="vertical-align:middle"><span>Conduct test</span></button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<h1 style="padding:10px; font-size:30px">Completed tests</h1>
+<table class="hover-table" >
+    <thead>
+    <tr>
+        <th>Test ID</th>
+        <th>Patient</th>
+        <th>Date</th>
+        <th>Date of completion</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="completedKftList : ${completedKftList}">
+        <td th:text="${completedKftList.kftId}"></td>
+        <td th:text="${completedKftList.patientId}"></td>
+        <td th:text="${completedKftList.date}"></td>
+        <td th:text="${completedKftList.dateOfCompletion}"></td>
+        <td style="display: flex;">
+            <form action="#" th:action="@{/laboratory/print-kft/{kftId}(kftId=${completedKftList.kftId})}" method="GET">
+                <button class="delete-button" style="vertical-align:middle"><span>Print</span></button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
