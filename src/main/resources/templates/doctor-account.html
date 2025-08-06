@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <style>
+        #patients {
+   font-family: Arial, Helvetica, sans-serif;
+   border-collapse: collapse;
+   width: 90%;
+   border-radius: 10px;
+ }
+
+ #patients td, #customers th {
+   border: 0px solid #ddd;
+   padding: 8px;
+ }
+
+ #patients tr:nth-child(even){background-color: #f2f2f2;}
+
+ #patients tr:hover {background-color: #ddd;}
+
+ #patients th {
+   padding-top: 12px;
+   padding-bottom: 12px;
+   text-align: left;
+   background-color: #001536;
+   color: white;
+ }
+        .button {
+  background-color: skyblue;
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+/* Darker background on mouse-over */
+.button:hover {
+  background-color: #001536;
+}
+        .delete-button {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+/* Darker background on mouse-over */
+.delete-button:hover {
+  background-color: #e31717;
+}
+    </style>
+</head>
+<body>
+<header style="margin: 0;
+        padding: 0;">
+    <h1 style="color: white;
+                background: linear-gradient(90deg, #020024 30%, #00f7ff, rgb(2,0,36) 180%);
+                font-family: 'Garamond', monospace;
+                margin: 0;
+                padding: 10px;
+                text-align: left;
+                font-size: 50px;">CommunityCare Diagnostics</h1>
+</header>
+<br>
+
+        <h1 style="font-family: Arial, Helvetica, sans-serif;"><b>Today's list of appointments</b></h1>
+        <table id="patients" style="margin-left: auto;
+                             margin-right: auto;">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="patientDtoList : ${patientDtoList}">
+                <td th:text="${patientDtoList.firstName}"></td>
+                <td th:text="${patientDtoList.age}"></td>
+                <td th:text="${patientDtoList.date}"></td>
+                <td th:text="${patientDtoList.attendance}"></td>
+                <td style="display: flex;">
+                    <form action="#" th:action="@{/appointment/delete/{appointmentId}(appointmentId=${patientDtoList.appointmentId})}" method="POST">
+                        <button class="delete-button" style="vertical-align:middle"><span>Delete</span></button>
+                    </form>
+                    <form action="#" th:action="@{/prescription/add/{appointmentId}(appointmentId=${patientDtoList.appointmentId})}" method="POST">
+                        <button class="button" style="vertical-align:middle"><span>Consult</span></button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+</body>
+</html>

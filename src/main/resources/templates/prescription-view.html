@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Prescription</title>
+    <style>
+        div {
+           background-color: #fffff2;
+           border-radius: 10px;
+           padding: 30px;
+           width: 60%;
+           margin-top: 0px;
+           font-family:Arial, Helvetica, sans-serif
+       }
+    </style>
+</head>
+<body>
+<header style="margin: 0;
+        padding: 0;">
+    <h1 style="color: white;
+                background: linear-gradient(90deg, #020024 30%, #00f7ff, rgb(2,0,36) 180%);
+                font-family: 'Garamond', monospace;
+                margin: 0;
+                padding: 10px;
+                text-align: left;
+                font-size: 50px;">CommunityCare Diagnostics</h1>
+</header>
+
+
+
+
+<div>
+    <h3>Weight: </h3><td th:text="${prescription.weight}"></td><br>
+    <h3>Notes: </h3><td th:text="${prescription.notes}"></td><br>
+    <h3>Diagnosis: </h3><td th:text="${prescription.diagnosis}"></td><br>
+    <h3>Medication: </h3><td th:text="${prescription.medication}"></td><br>
+</div>
+</table>
+</body>
+</html>

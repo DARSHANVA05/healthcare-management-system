@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctors List</title>
+    <style>
+        .container {
+       display: flex;
+       flex-wrap: wrap;
+       gap: 10px;
+       justify-content: space-between;
+   }
+   .item {
+       background-color: #f2f2f2;
+       margin-bottom: 20px;
+       border: 0px solid #ccc;
+       padding: 20px;
+       text-align: left;
+       border-radius: 5px;
+       width: calc(50% - 10px); /* Set to 50% to fit 2 per row */
+       box-sizing: border-box;
+       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+   }
+   .button {
+       display: inline-block;
+       border-radius: 4px;
+       background-color: #0a0040;
+       border: none;
+       color: white;
+       text-align: center;
+       font-size: 18px;
+       padding: 10px;
+       width: 100%;
+       transition: all 0.5s;
+       cursor: pointer;
+       margin-top: 10px;
+   }
+   .button span {
+       cursor: pointer;
+       display: inline-block;
+       position: relative;
+       transition: 0.5s;
+   }
+   .button span:after {
+       content: '\00bb';
+       position: absolute;
+       opacity: 0;
+       top: 0;
+       right: -20px;
+       transition: 0.5s;
+   }
+   .button:hover span {
+       padding-right: 25px;
+   }
+   .button:hover span:after {
+       opacity: 1;
+       right: 0;
+   }
+    </style>
+
+</head>
+<body>
+<header style="margin: 0;
+        padding: 0;">
+    <h1 style="color: white;
+                background: linear-gradient(90deg, #020024 30%, #00f7ff, rgb(2,0,36) 180%);
+                font-family: 'Garamond', monospace;
+                margin: 0;
+                padding: 10px;
+                text-align: left;
+                font-size: 50px;">CommunityCare Diagnostics</h1>
+</header>
+
+<h1 style="font-family: Arial, Helvetica, sans-serif;">List of <td th:text="${specialisation}"></td></h1>
+
+<div class="container" th:each="doctor : ${doctorDtoList}" style="font-family: Arial, Helvetica, sans-serif;">
+    <div class="item">
+        <strong><h2 style="padding:0px;margin: 0">
+            <td style="font-size:30px" th:text="${doctor.firstName}"></td>
+            <td style="font-size:30px" th:text="${doctor.lastName}"></td>
+        </h2></strong>
+        <table class="vertical-table" style="padding:2px; color:#2e2e2e">
+            <tr>
+                <td style="font-weight:bold" th:text="${doctor.qualification}"></td>
+            </tr>
+            <tr>
+                <th>Years of experience: </th>
+                <td th:text="${doctor.experience}"></td>
+            </tr>
+        </table>
+        <form action="#" th:action="@{/appointment/book/{doctorId}(doctorId=${doctor.doctorId})}" method="POST">
+            <button class="button" style="vertical-align:middle"><span>Book appointment</span></button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

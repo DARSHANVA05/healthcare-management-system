@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Prescription list</title>
+    <style>
+        #customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 90%;
+
+  }
+
+  #customers td, #customers th {
+    border: 0px solid #ddd;
+    padding: 8px;
+
+  }
+
+  #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+  #customers tr:hover {background-color: #ddd;}
+
+  #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #001536;
+    color: white;
+  }
+
+  .button {
+  background-color: skyblue;
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+/* Darker background on mouse-over */
+.button:hover {
+  background-color: #001536;
+}
+
+    </style>
+</head>
+<body>
+<header style="margin: 0;
+        padding: 0;">
+    <h1 style="color: white;
+                background: linear-gradient(90deg, #020024 30%, #00f7ff, rgb(2,0,36) 180%);
+                font-family: 'Garamond', monospace;
+                margin: 0;
+                padding: 10px;
+                text-align: left;
+                font-size: 50px;">CommunityCare Diagnostics</h1>
+</header>
+
+<h1 style="font-family:Arial, Helvetica, sans-serif; padding:5px;">Previous appointments list</h1>
+<table id="customers" style="margin-left: auto;
+                             margin-right: auto;
+                             border-radius: 10px;">
+    <thead>
+    <tr>
+        <th colspan="2">Name</th>
+        <th>Specialisation</th>
+        <th>Date</th>
+        <th>Action</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="prescriptionDTOList : ${prescriptionDTOList}">
+        <td th:text="${prescriptionDTOList.firstName}"></td>
+        <td th:text="${prescriptionDTOList.lastName}"></td>
+        <td th:text="${prescriptionDTOList.specialisation}"></td>
+        <td th:text="${prescriptionDTOList.date}"></td>
+        <td style="align=center">
+            <form action="#" th:action="@{/prescription/download/{prescriptionId}(prescriptionId=${prescriptionDTOList.prescriptionId})}" method="GET">
+                <button class="button" style="vertical-align:middle"><span>Download</span></button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

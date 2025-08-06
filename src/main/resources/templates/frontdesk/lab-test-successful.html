@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Confirmation</title>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #f4f4f9;
+          color: #333;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 100vh;
+        }
+        .confirmation-container {
+          background-color: #ffffff;
+          padding: 2rem;
+          max-width: 600px;
+          width: 100%;
+          border-radius: 8px;
+          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+          text-align: center;
+        }
+        h1 {
+          color: #020024;
+          font-size: 24px;
+        }
+        .details {
+          margin-top: 1.5rem;
+          text-align: left;
+        }
+        .details p {
+          font-size: 16px;
+          margin: 0.5rem 0;
+        }
+        .important-info {
+          background-color: #f9f9f9;
+          padding: 1rem;
+          border-left: 4px solid #00f7ff;
+          margin-top: 1.5rem;
+          text-align: left;
+        }
+        .footer {
+          margin-top: 2rem;
+          font-size: 14px;
+          color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<div class="confirmation-container">
+    <header style="margin: 0;
+        padding: 0;">
+        <h1 style="color: white;
+                background: linear-gradient(90deg, #020024 30%, #00f7ff, rgb(2,0,36) 180%);
+                font-family: 'Garamond', monospace;
+                margin: 0;
+                padding: 10px;
+                text-align: left;
+                font-size: 50px;">CommunityCare Diagnostics</h1>
+    </header>
+    <h1>Lab test Confirmed!</h1>
+    <p>Here are the details:</p>
+
+    <div class="details">
+        <p><strong style="padding:8px">Date:</strong><td th:text="${date}"></td></p>
+        <p><strong style="padding:8px">Test name:</strong><td th:text="${testName}"></td></p>
+        <p><strong style="padding:8px">Patient name:</strong><td th:text="${name}"></td></p>
+    </div>
+
+    <div class="important-info">
+        <p><strong>Important:</strong></p>
+        <ul>
+            <li>Please arrive 15-30 minutes early for sample collection.</li>
+            <li>Bring your ID.</li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        <p>For changes or questions, contact us at 7892027335.</p>
+        <p>Thank you for choosing CommunityCare Diagnostics! We look forward to seeing you.</p>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>doctor-account-creation</title>
+</head>
+<body>
+<form action="#" th:action="@{/doctor/validation}" th:object="${doctor}" method="POST">
+    <div class="textbox">
+        <input type="text" th:field="*{firstName}"
+               placeholder="First Name" class="form-control mb-4 col-4" required>
+    </div>
+    <div class="textbox">
+        <input type="text" th:field="*{lastName}"
+               placeholder="Last Name" class="form-control mb-4 col-4" required>
+    </div>
+    <div class="textbox">
+        <input type="text" th:field="*{phoneNo}"
+               placeholder="phoneNo" class="form-control mb-4 col-4" required>
+    </div>
+    <div class="textbox">
+        <select type="text" th:field="*{gender}" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="others">Others</option>
+        </select>
+    </div>
+    <div class="textbox">
+        <input type="number" step="1" min="0" max="150" th:field="*{age}"
+               placeholder="age" class="form-control mb-4 col-4" required>
+    </div>
+    <div class="textbox">
+        <input type="email" th:field="*{email}"
+               placeholder="email" class="form-control mb-4 col-4" required>
+    </div>
+    <div class="textbox">
+        <input type="date" th:field="*{dob}"
+               placeholder="dob" class="form-control mb-4 col-4" required>
+    </div>
+    <div class="textbox">
+        <input type="number" th:field="*{experience}"
+               placeholder="experience" class="form-control mb-4 col-4" required>
+    </div>
+
+    <div class="textbox">
+        <select type="text" th:field="*{medicalExpertise}" required>
+            <option value="Cardiology">Cardiology</option>
+            <option value="Pediatrics">Pediatrics</option>
+            <option value="Dermatology">Dermatology</option>
+            <option value="psychiatry">psychiatry</option>
+            <option value="Orthopedics">Orthopedics</option>
+            <option value="Nephrology">Nephrology</option>
+            <option value="Endocrinology">Endocrinology</option>
+            <option value="Radiology">Radiology</option>
+            <option value="Urology">Urology</option>
+        </select>
+    </div>
+
+    <div class="textbox">
+        <select type="text" th:field="*{qualification}" required>
+            <option value="MBBS">MBBS</option>
+            <option value="MBBS,MD">MBBS, MD</option>
+            <option value="BDS">BDS</option>
+            <option value="BAMS">BAMS</option>
+            <option value="BHMS">BHMS</option>
+            <option value="BPT">BPT</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-info col-2">Create account</button>
+
+</form>
+
+</body>
+</html>

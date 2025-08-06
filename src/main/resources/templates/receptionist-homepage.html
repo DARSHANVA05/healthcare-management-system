@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receptionist Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 0px;
+        }
+
+        header {
+            background-color: #0077cc;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        main {
+            border: 20px solid #f4f4f9;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        section {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            flex: 1 1 calc(50% - 20px);
+            max-width: calc(50% - 20px);
+        }
+
+        h2 {
+            margin-bottom: 15px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        form input, form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        form button {
+            width: 100%;
+            background-color: #0077cc;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #005fa3;
+        }
+
+       table{
+        width: 100%;
+            border-collapse: collapse;
+       }
+
+        table td, th {
+        border: 0px solid #ddd;
+        padding: 8px;
+        }
+
+        table tr:nth-child(even){background-color: #f2f2f2;}
+
+        table tr:hover {background-color: #ddd;}
+
+        table th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #001835;
+        color: white;
+        }
+
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+<header style="margin: 0;
+        padding: 0;">
+
+    <h1 style="color: white;
+                background: linear-gradient(90deg, #020024 30%, #00f7ff, rgb(2,0,36) 180%);
+                font-family: 'Garamond', monospace;
+                margin: 0;
+                padding: 10px;
+                text-align: left;
+                font-size: 50px;">CommunityCare Diagnostics</h1>
+    <h4 style="color: white;
+                background: linear-gradient(90deg, #f0ffba 30%, #00f7ff, rgb(2,0,36) 180%);
+                font-family:Arial, sans-serif;
+                margin: 0;
+                padding: 10px;
+                text-align: right;
+                font-size: 25px;">Welcome <td th:text="${receptionistName}"></td></h4>
+</header>
+<main>
+    <section class="appointment-form">
+        <h2>Doctor appointment booking</h2>
+        <a style="font-size: 20px; padding: 0px; color: #489dc2; text-decoration: none;"
+           th:href="@{/receptionist/cardiologists}">Cardiologists</a>
+        <br>
+        <a style="font-size: 20px; padding: 0px; color: #489dc2; text-decoration: none;"
+           th:href="@{/receptionist/dermatologists}">Dermatologists</a>
+        <br>
+        <a style="font-size: 20px; padding: 0px; color: #489dc2; text-decoration: none;"
+           th:href="@{/receptionist/endocrinologists}">Endocrinologists</a>
+        <br>
+        <a style="font-size: 20px; padding: 0px; color: #489dc2; text-decoration: none;"
+           th:href="@{/receptionist/gastroenterologists}">Gastroenterologists</a>
+        <br>
+        <a style="font-size: 20px; padding: 0px; color: #489dc2; text-decoration: none;"
+           th:href="@{/receptionist/gynecologists}">Gynecologists</a>
+        <br>
+        <a style="font-size: 20px; padding: 0px; color: #489dc2; text-decoration: none;"
+           th:href="@{/receptionist/neurologists}">Neurologists</a>
+        <br>
+        <a style="font-size: 20px; padding: 0px; color: #489dc2; text-decoration: none;"
+           th:href="@{/receptionist/nephrologists}">Nephrologists</a>
+        <br>
+        <a style="font-size: 20px; padding: 0px; color: #489dc2; text-decoration: none;"
+           th:href="@{/receptionist/oncologists}">Oncologists</a>
+        <br>
+        <a style="font-size: 20px; padding: 0px; color: #489dc2; text-decoration: none;"
+           th:href="@{/receptionist/ophthalmologists}">Ophthalmologists</a>
+        <br>
+        <a style="font-size: 20px; padding: 0px; color: #489dc2; text-decoration: none;"
+           th:href="@{/receptionist/orthopedics}">Orthopedics</a>
+        <br>
+        <a style="font-size: 20px; padding: 0px; color: #489dc2; text-decoration: none;"
+           th:href="@{/receptionist/pediatricians}">Pediatricians</a>
+        <br>
+        <a style="font-size: 20px; padding: 0px; color: #489dc2; text-decoration: none;"
+           th:href="@{/receptionist/urologists}">Urologists</a>
+    </section>
+    
+    <section class="patient-tracker">
+        <h2>Patient Tracker</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Doctor</th>
+                <th>Patient</th>
+                <th>Phone No</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+
+           <tr th:each ="appointmentDtoList : ${appointmentDtoList}">
+                <td th:text="${appointmentDtoList.doctorName}"></td>
+                <td th:text="${appointmentDtoList.patientName}"></td>
+                <td th:text="${appointmentDtoList.phoneNo}"></td>
+                <td th:text="${appointmentDtoList.time}"></td>
+               <td th:text="${appointmentDtoList.status}">
+               <td>
+               <form action="#" th:action="@{/receptionist/status/{appointmentId}(appointmentId=${appointmentDtoList.appointmentId})}" method="POST">
+                   <button class="button" style="vertical-align:middle">change status</button>
+               </form>
+               </td>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="appointment-form">
+        <h2>Book lab test</h2>
+        <a style="font-size: 20px; padding: 0px; color: #489dc2; text-decoration: none;"
+           th:href="@{/receptionist/cpt}">Coagulation profile test(CPT)</a>
+        <br>
+        <a style="font-size: 20px; padding: 0px; color: #489dc2; text-decoration: none;"
+           th:href="@{/receptionist/cbct}">Complete Blood Count test(CBC)</a>
+        <br>
+        <a style="font-size: 20px; padding: 0px; color: #489dc2; text-decoration: none;"
+           th:href="@{/receptionist/dfpt}">Dengue fever panel test(DFP)</a>
+        <br>
+        <a style="font-size: 20px; padding: 0px; color: #489dc2; text-decoration: none;"
+           th:href="@{/receptionist/kft}">Kidney function test(KFT)</a>
+        <br>
+        <a style="font-size: 20px; padding: 0px; color: #489dc2; text-decoration: none;"
+           th:href="@{/receptionist/lpt}">Lipid profile test(LPT)</a>
+        <br>
+        <a style="font-size: 20px; padding: 0px; color: #489dc2; text-decoration: none;"
+           th:href="@{/receptionist/lft}">Liver function test(LFT)</a>
+        <br>
+        <a style="font-size: 20px; padding: 0px; color: #489dc2; text-decoration: none;"
+           th:href="@{/receptionist/tft}">Thyroid function test(TFT)</a>
+        <br>
+    </section>
+</main>
+<footer>
+
+</footer>
+</body>
+</html>
